@@ -12,7 +12,7 @@ import voluptuous as vol
 
 from homeassistant.components import persistent_notification
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_API_KEY, CONF_API_TOKEN, CONF_EMAIL, CONF_ZONE
+from homeassistant.const import CONF_API_KEY, CONF_EMAIL, CONF_ZONE
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
@@ -20,6 +20,7 @@ import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.event import async_track_time_interval
 
 from .const import (
+    CONF_API_TOKEN,
     CONF_RECORDS,
     DATA_UNDO_UPDATE_INTERVAL,
     DEFAULT_UPDATE_INTERVAL,

@@ -5,9 +5,13 @@ from pycfdns.exceptions import (
     CloudflareZoneException,
 )
 
-from homeassistant.components.cloudflare.const import CONF_RECORDS, DOMAIN
+from homeassistant.components.cloudflare.const import (
+    CONF_API_TOKEN,
+    CONF_RECORDS,
+    DOMAIN,
+)
 from homeassistant.config_entries import SOURCE_USER
-from homeassistant.const import CONF_API_TOKEN, CONF_SOURCE, CONF_ZONE
+from homeassistant.const import CONF_SOURCE, CONF_ZONE
 from homeassistant.data_entry_flow import (
     RESULT_TYPE_ABORT,
     RESULT_TYPE_CREATE_ENTRY,

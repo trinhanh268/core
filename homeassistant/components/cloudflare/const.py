@@ -3,6 +3,7 @@
 DOMAIN = "cloudflare"
 
 # Config
+CONF_API_TOKEN = "api_token"
 CONF_RECORDS = "records"
 
 # Data

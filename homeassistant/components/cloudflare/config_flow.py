@@ -12,13 +12,13 @@ import voluptuous as vol
 
 from homeassistant.components import persistent_notification
 from homeassistant.config_entries import CONN_CLASS_CLOUD_PUSH, ConfigFlow
-from homeassistant.const import CONF_API_TOKEN, CONF_ZONE
+from homeassistant.const import CONF_ZONE
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
-from .const import CONF_RECORDS
+from .const import CONF_API_TOKEN, CONF_RECORDS
 from .const import DOMAIN  # pylint:disable=unused-import
 
 _LOGGER = logging.getLogger(__name__)
@@ -45,7 +45,7 @@ def _records_schema(records: Optional[List] = None):
     records_dict = {}
 
     if records:
-        records_dict = {name for name in records}
+        records_dict = {name: name for name in records}
 
     return vol.Schema({vol.Required(CONF_RECORDS): cv.multi_select(records_dict)})
 
@@ -69,7 +69,7 @@ async def validate_input(hass: HomeAssistant, data: Dict):
         zones = await cfupdate.get_zones()
         if zone:
             zone_id = await cfupdate.get_zone_id()
-            records = await cfupdate.get_zone_records(zone_id)
+            records = await cfupdate.get_zone_records(zone_id, "A")
     except CloudflareConnectionException as error:
         raise CannotConnect from error
     except CloudflareAuthenticationException as error:
