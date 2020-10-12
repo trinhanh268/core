@@ -151,6 +151,7 @@ FLOWS = [
     "pvpc_hourly_pricing",
     "rachio",
     "rainmachine",
+    "ralassistant",
     "rfxtrx",
     "ring",
     "risco",
